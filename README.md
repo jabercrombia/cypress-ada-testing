@@ -33,7 +33,7 @@ yarn install
 
 ---
 
-## ⚙️ Environment Variables
+## Environment Variables
 
 Create a `.env` file in the root of the project:
 
@@ -46,7 +46,7 @@ You can specify all the routes you want to test, separated by commas.
 
 ---
 
-## 🧪 Running Tests
+## Running Tests
 
 ### Open Cypress in interactive mode
 
@@ -62,7 +62,7 @@ npm run cypress:run
 
 ---
 
-## 🧼 Included Tests
+## Included Tests
 
 1. Image Alt Tag Test
 2. Button Labels
