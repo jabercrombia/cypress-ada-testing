@@ -7,8 +7,8 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   env: {
-    ROUTES: process.env.ROUTES,
-    SITE_URL: process.env.CYPRESS_SITE_URL,
+    SITE_URL: process.env.SITE_URL,
+    SITEMAP_URL: process.env.SITEMAP_URL,
   },
   e2e: {
     setupNodeEvents(on, config) {
@@ -19,6 +19,6 @@ module.exports = defineConfig({
         }
       });
     },
-    baseUrl: process.env.CYPRESS_SITE_URL || 'http://localhost:3000',
+    baseUrl: process.env.SITE_URL || 'http://localhost:3000',
   },
 });

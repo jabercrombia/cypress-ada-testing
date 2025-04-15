@@ -1,37 +1,42 @@
-describe('Buttons Accessibility', () => {
-  const routeEnv = Cypress.env('ROUTES');
+const sitemapUrl = Cypress.env('SITEMAP_URL');
 
-  if (!routeEnv) {
-    it('No ROUTES environment variable set', () => {
-      throw new Error('Missing ROUTES. Set it via .env or CLI');
+if (!sitemapUrl) {
+  throw new Error('Missing SITEMAP_URL. Set it via .env');
+}
+
+describe('Sitemap Routes - Button Accessibility', () => {
+  let routes = [];
+
+  before(() => {
+    cy.task('getRoutesFromSitemap', sitemapUrl).then((res) => {
+      routes = res;
     });
-    return;
-  }
+  });
 
-  const routes = routeEnv
-    .split(',')
-    .map((r) => r.trim().startsWith('/') ? r.trim() : '/' + r.trim());
-
-  if (!routes.includes('/')) {
-    routes.push('/');
-  }
-
-  routes.forEach((route) => {
-    it(`should have accessible button labels on ${route}`, () => {
+  it('Should validate that <button> elements have an aria-label when buttons exist', () => {
+    routes.forEach((route) => {
+      cy.log(`Testing button aria-labels on route: ${route}`);
       cy.visit(route);
-
+      
+      // Check if there is at least one button on the page
       cy.get('body').then(($body) => {
-        if ($body.find('button').length > 0) {
-          cy.get('button').each(($button) => {
-            cy.wrap($button)
-              .should(($btn) => {
-                const hasText = $btn.text().trim().length > 0;
-                const hasAriaLabel = $btn.attr('aria-label')?.trim().length > 0;
-                expect(hasText || hasAriaLabel, 'button should have text or aria-label').to.be.true;
-              });
-          });
+        // Check if there are any buttons on the page
+        const buttonExists = $body.find('button').length > 0;
+  
+        if (buttonExists) {
+          cy.log(`Button exists on the page! -  ${route}`);
+            cy.get('button').then(($buttons) => {
+              // If there are buttons, perform the tests
+              if ($buttons.length > 0) {
+                cy.wrap($buttons).each(($button) => {
+                  cy.wrap($button)
+                    .should('have.attr', 'aria-label')
+                    .and('not.be.empty');
+                });
+              } 
+            });
         } else {
-          cy.log(`No buttons found on ${route}`);
+          cy.log('No buttons found on this page.');
         }
       });
     });

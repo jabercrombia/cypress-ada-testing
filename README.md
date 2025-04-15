@@ -9,6 +9,7 @@ cypress/
   └── e2e/
       ├── imagealttags.cy.js    # Tests to ensure all images have alt tags
       └── buttonlabels.cy.js    # Tests for accessible button labels
+      └── headings.cy.js        # Tests for h1 tags on each page
 cypress.config.js               # Cypress configuration
 .env                            # Environment variables (e.g., routes to test)
 ```
@@ -38,11 +39,11 @@ yarn install
 Create a `.env` file in the root of the project:
 
 ```
-CYPRESS_SITE_URL="URL USED FOR TESTING"
-ROUTES=/,/about,/contact
+SITE_URL="http://wwww.example/com"
+SITEMAP_URL="http://wwww.example/com/sitemap.xml"
 ```
 
-You can specify all the routes you want to test, separated by commas.
+You will need a /sitemap.xml in order for the automation to look at all pages.
 
 ---
 
@@ -64,9 +65,10 @@ npm run cypress:run
 
 ## Included Tests
 
-1. Image Alt Tag Test
-2. Button Test
-  - Buttons have aria-label
-3. Headings
-  - Test if each page has a minimum of a h1 tag
+* Image Alt Tag Test
+    * Check if images have alt tag
+* Button Test
+    * Buttons have aria-label
+* Headings
+  * Test if each page has a minimum of a h1 tag
 
