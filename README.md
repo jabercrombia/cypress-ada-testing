@@ -7,9 +7,10 @@ This repository contains end-to-end tests for validating the accessibility and f
 ```
 cypress/
   └── e2e/
-      └── imagealttags.cy.js   # Test to ensure all images have alt tags
-cypress.config.js              # Cypress configuration
-.env                           # Environment variables (e.g., routes to test)
+      ├── imagealttags.cy.js    # Tests to ensure all images have alt tags
+      └── buttonlabels.cy.js    # Tests for accessible button labels
+cypress.config.js               # Cypress configuration
+.env                            # Environment variables (e.g., routes to test)
 ```
 
 ---
@@ -63,5 +64,6 @@ npm run cypress:run
 
 ## 🧼 Included Tests
 
-### Image Alt Tag Test
-### Button Labels
+1. Image Alt Tag Test
+2. Button Labels
+
