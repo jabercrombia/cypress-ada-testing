@@ -19,8 +19,7 @@ cypress.config.js              # Cypress configuration
 ### 1. Clone this repository
 
 ```bash
-git clone https://github.com/your-username/your-cypress-repo.git
-cd your-cypress-repo
+git clone https://github.com/jabercrombia/cypress-ada-testing.git
 ```
 
 ### 2. Install dependencies
@@ -38,7 +37,8 @@ yarn install
 Create a `.env` file in the root of the project:
 
 ```
-CYPRESS_ROUTES=/,/about,/contact
+BASE_API_URL="URL USED FOR TESTING"
+ROUTES=/,/about,/contact
 ```
 
 You can specify all the routes you want to test, separated by commas.
@@ -50,13 +50,13 @@ You can specify all the routes you want to test, separated by commas.
 ### Open Cypress in interactive mode
 
 ```bash
-CYPRESS_ROUTES=/,/about,/contact npm run cypress:open
+npm run cypress:open
 ```
 
 ### Run all tests headlessly in the terminal
 
 ```bash
-CYPRESS_ROUTES=/,/about,/contact npm run cypress:run
+npm run cypress:run
 ```
 
 ---
@@ -64,3 +64,4 @@ CYPRESS_ROUTES=/,/about,/contact npm run cypress:run
 ## 🧼 Included Tests
 
 ### Image Alt Tag Test
+### Button Labels
