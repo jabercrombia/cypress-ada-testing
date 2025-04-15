@@ -15,7 +15,7 @@ cypress.config.js               # Cypress configuration
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone this repository
 
