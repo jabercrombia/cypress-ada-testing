@@ -38,7 +38,7 @@ yarn install
 Create a `.env` file in the root of the project:
 
 ```
-BASE_API_URL="URL USED FOR TESTING"
+CYPRESS_SITE_URL="URL USED FOR TESTING"
 ROUTES=/,/about,/contact
 ```
 
@@ -65,5 +65,8 @@ npm run cypress:run
 ## Included Tests
 
 1. Image Alt Tag Test
-2. Button Labels
+2. Button Test
+  - Buttons have aria-label
+3. Headings
+  - Test if each page has a minimum of a h1 tag
 
